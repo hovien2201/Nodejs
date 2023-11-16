@@ -1,0 +1,59 @@
+
+<style>
+      #preview {
+        width: 300px; /* Định nghĩa chiều rộng */
+        height: 300px; /* Tự động tính toán chiều cao dựa trên tỷ lệ */
+      }
+    </style>
+
+
+<h2 class="d-flex justify-content-center align-items-center">Add new Product</h2>
+<form action="/saveCreate" method="post" enctype="multipart/form-data" >
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control"  name="name" placeholder="Enter name" value="{{product.name}}">
+    {{#if errors.name}}
+        <div class="red">{{errors.name}}</div>
+    {{/if}}
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="number"  class="form-control"  name="price" placeholder="Enter price" value="{{product.price}}">
+    {{#if errors.price}}
+        <div class="red">{{errors.price}}</div>
+    {{/if}}
+  </div>
+  <div class="mb-3">
+    <label for="type" class="form-label">Type</label>
+    <select class="form-select" id="type" name="typeid"  >
+        {{#each types}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Image</label>
+     <input type="file" name="image" onchange="previewImage(event)" class="form-control" />
+      <br />
+      <img id="preview" src="#" alt="Hình ảnh" />
+    {{#if errors.image}}
+        <div class="red">{{errors.image}}</div>
+    {{/if}}
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="/" class="btn btn-warning">Back</a>
+</form>
+<script>
+      function previewImage(event) {
+        var input = event.target;
+        var reader = new FileReader();
+
+        reader.onload = function() {
+          var imgElement = document.getElementById('preview');
+          imgElement.src = reader.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    </script>
