@@ -8,7 +8,7 @@ const  mysqlConnection = mysql.createConnection({
 });
 
 function connect() {
-    mongoose.connect('mongodb://127.0.0.1:27017/test_mongo',{useNewUrlParser:true,useUnifiedTopology:true})
+    mongoose.connect('mongodb+srv://hovien30122017:xgf0WXvtG2t14rfC@demo.ajruykh.mongodb.net/test_mongo?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true})
         .then(() => console.log('Connected!!!!!!')).catch(() => console.log('Fail'));
 
     mysqlConnection.connect(function (err) {
