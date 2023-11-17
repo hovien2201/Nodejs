@@ -14,7 +14,7 @@ app.use(express.urlencoded({
 }))
 app.use(express.json());
 
-
+console.log(__dirname)
 app.engine('hbs', handlebars.create({extname: '.hbs'}).engine)
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, 'resources/views'))
