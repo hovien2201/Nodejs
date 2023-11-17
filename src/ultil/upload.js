@@ -4,7 +4,7 @@ const path = require('path')
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // Thư mục đích để lưu trữ tệp hình ảnh
-        cb(null, '/codegym/newnodejs/Nodejs/src/public/image');
+        cb(null, '/Nodejs/src/public/image');
     },
     filename: function (req, file,  cb) {
         console.log(file)
